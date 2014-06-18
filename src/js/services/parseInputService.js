@@ -6,13 +6,13 @@
       parse: parse
     };
 
-    function parse() {
-
-    };
+    function parse(text) {
+        return text.match(/(\d+|a)(?:\s+)(day|days|week|weeks|month|months|year|years)(?:\s+)(from|before|after)(?:\s+)(today|yesterday|tomorrow)/);
+    }
 
     return serviceMembers;
-  }
+  };
 
-  app.module('app').service('app.parseInputService', service);
+  angular.module('app').service('parseInputService', service);
 
 })();

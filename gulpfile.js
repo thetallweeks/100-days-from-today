@@ -4,11 +4,9 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
-    uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
     rename = require('gulp-rename'),
     clean = require('gulp-clean'),
-    concat = require('gulp-concat'),
     cache = require('gulp-cache'),
     gulpBowerFiles = require('gulp-bower-files'),
     browserSync = require('browser-sync'),
@@ -30,7 +28,7 @@ gulp.task('html', function() {
 gulp.task('sass', function() {
     return gulp.src('src/css/app.scss')
         .pipe(sass({
-            style: 'expanded',
+            style: 'expanded'
         }))
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
         .pipe(gulp.dest('dist/css'))
@@ -46,12 +44,6 @@ gulp.task('js', function() {
     return gulp.src('src/js/**/*.js')
         .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter('default'))
-        .pipe(concat('app.js'))
-        .pipe(gulp.dest('dist/js'))
-        .pipe(rename({
-            suffix: '.min'
-        }))
-        .pipe(uglify())
         .pipe(gulp.dest('dist/js'))
 });
 

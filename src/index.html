@@ -6,17 +6,19 @@
       <title>100 Days from Today</title>
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
       <link rel="stylesheet" href="css/app.css"/>
     </head>
     <body>
 
       <div ng-controller="inputController">
-          <form action="">
-              <input type="text" ng-model="input" />
-              <button ng-click="submit()" type="submit">Submit</button>
+          <form class="form" action="">
+              <div class="input-container">
+                  <input class="input" type="text" ng-model="input" placeholder="e.g. 50 days from tomorrow" />
+              </div>
+              <button class="button" ng-click="submit()" type="submit">Submit</button>
           </form>
-
-          <h1 ng-bind="value"></h1>
+          <h2 class="output" ng-bind="value"></h2>
       </div>
 
       <!-- In production use:

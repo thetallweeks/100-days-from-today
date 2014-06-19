@@ -12,7 +12,7 @@
             var modifier = input[2];
             var newDate = modifyDate(count, startDate, modifier);
             $scope.value = dateFilter(newDate, 'longDate');
-        }
+        };
     };
 
     function getCount(input) {

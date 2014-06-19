@@ -4,10 +4,8 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
-    imagemin = require('gulp-imagemin'),
     rename = require('gulp-rename'),
     clean = require('gulp-clean'),
-    cache = require('gulp-cache'),
     gulpBowerFiles = require('gulp-bower-files'),
     browserSync = require('browser-sync'),
     karma = require('karma').server;
@@ -45,17 +43,6 @@ gulp.task('js', function() {
         .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter('default'))
         .pipe(gulp.dest('dist/js'))
-});
-
-// Images
-gulp.task('images', function() {
-    return gulp.src('src/img/**/*')
-        .pipe(cache(imagemin({
-            optimizationLevel: 3,
-            progressive: true,
-            interlaced: true
-        })))
-        .pipe(gulp.dest('dist/img'))
 });
 
 // Clean
@@ -107,13 +94,13 @@ gulp.task('test', function() {
 
 // Build
 gulp.task('build', ['clean'], function() {
-    gulp.start('html', 'sass', 'bower-files', 'js', 'images');
+    gulp.start('html', 'sass', 'bower-files', 'js');
 });
 
 // Default task
 gulp.task('default', ['browser-sync'], function() {
 
-    gulp.start('html', 'sass', 'bower-files', 'js', 'images');
+    gulp.start('html', 'sass', 'bower-files', 'js');
 
     // Watch .html files
     gulp.watch('src/**/*.html', ['html']);
@@ -123,8 +110,5 @@ gulp.task('default', ['browser-sync'], function() {
 
     // Watch .js files
     gulp.watch('src/**/*.js', ['js']);
-
-    // Watch image files
-    gulp.watch('src/img/**/*', ['images']);
 
 });
